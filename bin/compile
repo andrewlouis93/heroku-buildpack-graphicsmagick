@@ -52,7 +52,7 @@ then
     stdout "compile $gm_name"
     tar -C /tmp -jxf "/tmp/$gm_file"
     cd "/tmp/$gm_name" && {
-      command ./configure --enable-static=no --enable-shared=yes --prefix="$gm_prefix/graphicsmagick"
+      command ./configure --with-rsvg=yes --enable-static=no --enable-shared=yes --prefix="$gm_prefix/graphicsmagick"
     }
 
     cd "/tmp/$gm_name" && {
@@ -73,18 +73,19 @@ then
 fi
 
 #librsvg2
-stdout "Bootstraping librsvg2."
+# stdout "Bootstraping librsvg2."
 
-RSVG_VENDOR="vendor/rsvg"
-RSVG_BINARY="http://s3.amazonaws.com/emogo_dev/deps.tar.gz"
+# RSVG_VENDOR="vendor/rsvg"
+# RSVG_BINARY="http://s3.amazonaws.com/emogo_dev/deps.tar.gz"
 
-mkdir -p $1/$RSVG_VENDOR
-curl $RSVG_BINARY -o - | tar -xz -C $1/$RSVG_VENDOR -f -
+# mkdir -p $1/$RSVG_VENDOR
+# curl $RSVG_BINARY -o - | tar -xz -C $1/$RSVG_VENDOR -f -
 
-if [ ! -f $RSVG_VENDOR/usr/bin/rsvg-convert ]
-then
-    echo "File rsvg-convert does not exists"
-fi
+# if [ ! -f $RSVG_VENDOR/bin/rsvg-convert ]
+# then
+#     echo "File rsvg-convert does not exists"
+# fi
+
 ### must clean this block up.
 
 
