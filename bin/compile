@@ -52,7 +52,7 @@ then
     stdout "compile $gm_name"
     tar -C /tmp -jxf "/tmp/$gm_file"
     cd "/tmp/$gm_name" && {
-      command ./configure --enable-static=no --enable-shared=yes --prefix="$gm_prefix/graphicsmagick"
+      command ./configure --with-rsvg=yes --enable-static=no --enable-shared=yes --prefix="$gm_prefix/graphicsmagick"
     }
 
     cd "/tmp/$gm_name" && {
