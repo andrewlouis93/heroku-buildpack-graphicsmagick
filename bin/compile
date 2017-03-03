@@ -72,6 +72,22 @@ then
     }
 fi
 
+#librsvg2
+stdout "Bootstraping librsvg2."
+
+RSVG_VENDOR="vendor/rsvg"
+RSVG_BINARY="http://s3.amazonaws.com/emogo_dev/deps.tar.gz"
+
+mkdir -p $1/$RSVG_VENDOR
+curl $RSVG_BINARY -o - | tar -xz -C $1/$RSVG_VENDOR -f -
+
+if [ ! -f $RSVG_VENDOR/usr/bin/rsvg-convert ]
+then
+    echo "File rsvg-convert does not exists"
+fi
+### must clean this block up.
+
+
 stdout "install $gm_name"
 mkdir -p "$build_dir/vendor"
 mkdir -p "$build_dir/.profile.d"
